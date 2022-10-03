@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.carousel-inner{
+    position: relative;
+}
+.img-crsl{
+    filter: brightness(0.5);
+    
+}
+#logo{
+    max-width: 80px;
+}
+#item_ticket{
+    color: darkgreen;
+}
+#texto-header{
+    height: 100vh;
+    width: 100vw;
+    padding-top: 20px;
+    padding-right: 120px;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    color:aliceblue;
+    justify-content: flex-end;
+    text-align: end;
+}
+#text-container{
+   display: inline-block;
+}
+#oradores{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+#card-oradores{
+margin: auto;
+max-width: 1000px;
+padding-bottom: 20px;
+}
+.card{
+    margin: 20px;
+}
+#postal-container{
+    height: 450px;
+}
+#foto-postal{
+ background-image: url("../img/honolulu.jpg");
+ background-size: cover;
+}
+#info-postal{
+    background-color: #34344C;
+    padding: 20px;
+    color:antiquewhite;
+}
+
+#oradores-form{
+    max-width: 800px;
+    margin: auto;
+}
+#btn-form{
+    background-color: forestgreen;
+}
+footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;;
+    height: 150px;
+    background-color:#34344C;
+
+}
+.btn-footer{
+    display: inline-block;
+    max-width: 80px;
+    text-align: center;
+}
+.btn-footer a{
+    text-decoration: none;
+    color: antiquewhite;
+}
