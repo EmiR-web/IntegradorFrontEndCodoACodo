@@ -45,10 +45,10 @@ padding-bottom: 20px;
 }
 #postal-container{
     display: flex;
-    max-height: 450px;
+    height: 450px;
 }
 #postal{
-    max-height: 450px;
+    height: 450px;
 }
 #info-postal{
     background-color: #34344C;
