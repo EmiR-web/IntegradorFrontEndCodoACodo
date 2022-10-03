@@ -47,7 +47,7 @@ padding-bottom: 20px;
     height: 450px;
 }
 #foto-postal{
- background-image: url("IntegradorFrontEndCodoACodo/img/honolulu.jpg");
+ background-image: url("../img/honolulu.jpg");
  background-size: cover;
 }
 #info-postal{
