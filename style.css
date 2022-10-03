@@ -44,11 +44,11 @@ padding-bottom: 20px;
     margin: 20px;
 }
 #postal-container{
-    height: 450px;
+    display: flex;
+    max-height: 450px;
 }
-#foto-postal{
- background-image: url("../img/honolulu.jpg");
- background-size: cover;
+#postal{
+    max-height: 450px;
 }
 #info-postal{
     background-color: #34344C;
