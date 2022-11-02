@@ -26,7 +26,7 @@ document.getElementById("descJr").innerText=descJunior.descuento + "%";
 document.getElementById("valorTicket").innerText=`VALOR DEL TICKET $${VALOR_TICKET}`;
 
 
-function reset() {
+function clearAlert() {
     resumenAlert.innerText= "Total a pagar: $";
 }
 
