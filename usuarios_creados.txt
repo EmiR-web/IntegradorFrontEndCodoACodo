@@ -1,0 +1,6 @@
+USUARIO ADMIN : braianramirez@gmail.com
+PASSWORD ADMIN : 123456
+
+
+USUARIO INVITADO: invitado@mail.com
+PASSWORD INVITADO: 123465
