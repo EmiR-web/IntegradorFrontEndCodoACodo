@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(!isset($_SESSION['maildelusuario']))
+{
+	// header('location: login.php');
+  // die();
+  $textoLogueo="Login";
+  $pagLogueo="#loginModal";
+}
+else{
+  $textoLogueo="Logout";
+  $pagLogueo="#logoutModal";
+
+}
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,13 +23,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Integrador CaC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <?php if (isset($_SESSION['maildelusuario'])){
+
+    
+    echo $_SESSION['maildelusuario'];
+    echo $_SESSION['rol']; }
+    ?>
     <header >
-     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+      <script>alert("Bienvenido <?php echo $_SESSION['nombre']?>")</script>
+     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark border-bottom ">
         <div class="container-fluid justify-content-end">
-          <a class="navbar-brand" href="#"><img src="img/codoacodo.png" alt="codoacodo" id="logo"></a>
+          <a class="navbar-brand" href="index.php"><img src="img/codoacodo.png" alt="codoacodo" id="logo"></a>
           <a class="nav-link active text-light me-4" aria-current="page" href="#">Conf. Bs. As.</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,21 +48,31 @@
                 <a class="nav-link" href="#">La conferencia</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Los oradores</a>
+                <a class="nav-link" href="oradores.php">Los oradores</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ">Lugar y Fecha</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ">Conviértete en orador</a>
+                <a class="nav-link " href="#oradores-formulario">Conviértete en orador</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " id="item_ticket" href="tickets.html">Comprar tickets</a>
               </li>
+              <li class="nav-item">
+                <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=<?=$pagLogueo?>>
+                    <?=$textoLogueo ?><i class="bi bi-box-arrow-in-right"></i></button>
+            </li>
+
             </ul>
           </div>
         </div>
       </nav>
+      <?php include 'loginModal.php' ?>
+      <?php include 'logoutModal.php' ?>
+
+       
       <div id="a" class="carousel slide " data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active ">
@@ -53,7 +89,7 @@
               <h1>Conf Bs As</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic illum ipsam consequatur harum magni. libero officiis Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet cum provident in optio vel maxime necessitatibus veniam accusantium numquam, voluptatibus eaque nobis distinctio, ipsa hic saepe aperiam deserunt a laboriosam.</p>
               <a href="#" class="btn btn-outline-light">Quiero ser orador</a>
-              <a href="tickets.html" class="btn btn-success">Comprar tickets</a>
+              <a href="/tickets.html" class="btn btn-success">Comprar tickets</a>
             </div>
             
           </div>
@@ -107,9 +143,9 @@
       </div>
     </main>
     <section >
-      <div class="row" id="postal-container" class="container">
+      <div class="container" id="postal-container" >
         <div class="col-6" >
-          <img src="img/honolulu.jpg" alt="" height="450px" >
+          <img src="img/honolulu.jpg" alt="" height="450px" id="imagen-postal" >
         </div>
         <div id="info-postal" class="col-6">
           <h2>Bs.As - Octubre</h2>
@@ -118,7 +154,7 @@
         </div>
       </div>
     </section>
-    <section class="container-fluid" >
+    <section class="container-fluid" id="oradores-formulario" >
       <div class="align-items-center oradores">
         <p>Conviértete en un</p>
         <h2>ORADOR</h2>
@@ -126,7 +162,7 @@
       </div>
     </section>
     <section class="container-fluid">
-      <form class="row oradores-form">
+      <form class="row oradores-form" action="oradores.php" method="POST">
         <div class="col-md-6 py-4">
           <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
         </div>
@@ -134,11 +170,11 @@
           <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
         </div>
         <div class="col-md-12">
-          <textarea class="form-control" rows="6" placeholder="Sobre qué quieres hablar?"></textarea>
+          <textarea class="form-control" name="tematica" rows="6" placeholder="Sobre qué quieres hablar?" ></textarea>
         </div>
         <div >
           <br>
-          <button class="btn btn-success form-control" id="btn-form">Enviar</button>
+          <input class="btn btn-success form-control" type="submit" name="btn-form" id="btn-form" value="Enviar">
         </div>
       </form>
     </section>
@@ -168,6 +204,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>
